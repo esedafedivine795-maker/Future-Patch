@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Setup - College Path</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="hero">
+    <h1>🧭 Setup Your Profile</h1>
+    <p>Select your preferences to get personalized college recommendations</p>
+
+    <!-- MAJOR DROPDOWN (dynamic) -->
+    <select id="major"></select>
+
+    <!-- GRADE DROPDOWN -->
+    <select id="grade">
+      <option value="middle">Middle School</option>
+      <option value="9">Grade 9</option>
+      <option value="10">Grade 10</option>
+      <option value="11">Grade 11</option>
+      <option value="12">Grade 12</option>
+    </select>
+
+    <br><br>
+
+    <button class="btn" onclick="saveData()">See Colleges 🎓</button>
+  </div>
+
+  <!-- LOAD MAJORS FIRST -->
+  <script src="majors.js"></script>
+
+  <!-- PAGE LOGIC -->
+  <script>
+    // 1. Populate dropdown dynamically
+    const select = document.getElementById("major");
+
+    majors.forEach(m => {
+      const option = document.createElement("option");
+      option.value = m;
+      option.textContent = m;
+      select.appendChild(option);
+    });
+
+    // 2. Save data and move to results page
+    function saveData() {
+      const major = document.getElementById("major").value;
+      const grade = document.getElementById("grade").value;
+
+      localStorage.setItem("major", major);
+      localStorage.setItem("grade", grade);
+
+      window.location.href = "results.html";
+    }
+  </script>
+<div class="top-arch"></div>
+<div class="bottom-arch"></div>
+
+<div class="floating" style="top:15%; left:10%;">🎓</div>
+<div class="floating" style="top:55%; left:85%;">📚</div>
+<div class="floating" style="top:30%; left:70%;">🌱</div>
+<div class="floating" style="top:75%; left:25%;">✨</div>
+<div class="floating" style="top:10%; left:50%;">🏫</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero">
+  <h1>📩 Join College Path</h1>
+
+  <input type="email" placeholder="Enter email">
+
+  <a class="btn" href="setup.html">Continue</a>
+</div>
+<div class="top-arch"></div>
+<div class="bottom-arch"></div>
+
+<div class="floating" style="top:15%; left:10%;">🎓</div>
+<div class="floating" style="top:55%; left:85%;">📚</div>
+<div class="floating" style="top:30%; left:70%;">🌱</div>
+<div class="floating" style="top:75%; left:25%;">✨</div>
+<div class="floating" style="top:10%; left:50%;">🏫</div>
+
+</body>
+</html>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f6fff8;
+  overflow-x: hidden;
+  animation: fadeIn 0.6s ease-in;
+}
+
+/* 🌿 BACKGROUND ARCHES (GLOBAL THEME) */
+.top-arch {
+  position: fixed;
+  top: -140px;
+  right: -140px;
+  width: 320px;
+  height: 320px;
+  background: #a5d6a7;
+  border-radius: 50%;
+  opacity: 0.55;
+  z-index: -1;
+}
+
+.bottom-arch {
+  position: fixed;
+  bottom: -160px;
+  left: -160px;
+  width: 380px;
+  height: 380px;
+  background: #81c784;
+  border-radius: 50%;
+  opacity: 0.35;
+  z-index: -1;
+}
+
+/* ✨ FLOATING EMOJIS */
+.floating {
+  position: fixed;
+  font-size: 22px;
+  opacity: 0.35;
+  animation: float 6s infinite ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 🏠 HERO SECTION */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  color: #1b5e20;
+  font-size: 2.2rem;
+}
+
+.hero p {
+  color: #4a4a4a;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* 📦 CARDS */
+.card {
+  background: white;
+  margin: 18px auto;
+  padding: 22px;
+  width: 85%;
+  max-width: 700px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* 🎯 BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #a5d6a7;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #81c784;
+  transform: scale(1.05);
+}
+
+/* ✨ INPUTS */
+input, select {
+  padding: 10px;
+  margin: 10px;
+  width: 250px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #81c784;
+}
+
+/* 🌊 PAGE FADE IN */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+}
+const colleges = [
+
+/* ===================== HARVARD ===================== */
+{
+  id: "harvard",
+  name: "Harvard University",
+
+  location: { country: "USA", city: "Cambridge" },
+
+  acceptance: "3–4%",
+
+  majors: ["Computer Science", "Business", "Law", "Medicine", "Economics"],
+
+  requirements: {
+    sat: "1480–1580",
+    act: "33–36",
+    ielts: "7.5+"
+  },
+
+  campus: {
+    has_campus: true,
+    dorms: true
+  },
+
+  cost: {
+    tuition_per_year: "$54,000",
+    total_cost_estimate: "$220,000"
+  },
+
+  scholarships: {
+    available: true,
+    types: [
+      "Need-based financial aid",
+      "Merit scholarships",
+      "Research grants"
+    ]
+  },
+
+  application_timeline: {
+    grade_9: ["Build strong study habits", "Join clubs"],
+    grade_10: ["Take advanced courses", "Start leadership roles"],
+    grade_11: ["SAT/ACT prep", "Build extracurriculars"],
+    grade_12: ["Apply + essays + recommendations"]
+  }
+},
+
+/* ===================== STANFORD ===================== */
+{
+  id: "stanford",
+  name: "Stanford University",
+
+  location: { country: "USA", city: "California" },
+
+  acceptance: "4%",
+
+  majors: ["Computer Science", "Engineering", "Business", "AI"],
+
+  requirements: {
+    sat: "1470–1570",
+    act: "32–35",
+    ielts: "7.0+"
+  },
+
+  campus: {
+    has_campus: true,
+    dorms: true
+  },
+
+  cost: {
+    tuition_per_year: "$56,000",
+    total_cost_estimate: "$230,000"
+  },
+
+  scholarships: {
+    available: true,
+    types: [
+      "Need-based aid",
+      "External scholarships",
+      "Research funding"
+    ]
+  },
+
+  application_timeline: {
+    grade_9: ["Start STEM clubs", "Coding basics"],
+    grade_10: ["Projects + competitions"],
+    grade_11: ["SAT prep + internships"],
+    grade_12: ["Applications"]
+  }
+},
+
+/* ===================== MIT ===================== */
+{
+  id: "mit",
+  name: "Massachusetts Institute of Technology",
+
+  location: { country: "USA", city: "Cambridge" },
+
+  acceptance: "5%",
+
+  majors: ["Engineering", "Computer Science", "Physics", "Mathematics"],
+
+  requirements: {
+    sat: "1500–1580",
+    act: "34–36",
+    ielts: "7.0+"
+  },
+
+  campus: {
+    has_campus: true,
+    dorms: true
+  },
+
+  cost: {
+    tuition_per_year: "$55,000",
+    total_cost_estimate: "$225,000"
+  },
+
+  scholarships: {
+    available: true,
+    types: [
+      "Need-based aid",
+      "STEM scholarships",
+      "Research grants"
+    ]
+  },
+
+  application_timeline: {
+    grade_9: ["Strong math foundation"],
+    grade_10: ["STEM competitions"],
+    grade_11: ["Research + SAT prep"],
+    grade_12: ["Apply"]
+  }
+},
+
+/* ===================== NYU ===================== */
+{
+  id: "nyu",
+  name: "New York University",
+
+  location: { country: "USA", city: "New York" },
+
+  acceptance: "12%",
+
+  majors: ["Business", "Arts", "Computer Science", "Media"],
+
+  requirements: {
+    sat: "1370–1530",
+    act: "30–34",
+    ielts: "7.0+"
+  },
+
+  campus: {
+    has_campus: true,
+    dorms: true
+  },
+
+  cost: {
+    tuition_per_year: "$53,000",
+    total_cost_estimate: "$210,000"
+  },
+
+  scholarships: {
+    available: true,
+    types: [
+      "Merit scholarships",
+      "Need-based aid"
+    ]
+  },
+
+  application_timeline: {
+    grade_9: ["Join clubs"],
+    grade_10: ["Improve GPA"],
+    grade_11: ["SAT prep"],
+    grade_12: ["Apply"]
+  }
+},
+
+/* ===================== OXFORD ===================== */
+{
+  id: "oxford",
+  name: "University of Oxford",
+
+  location: { country: "UK", city: "Oxford" },
+
+  acceptance: "15–18%",
+
+  majors: ["Law", "Medicine", "Philosophy", "Politics"],
+
+  requirements: {
+    sat: "1450+",
+    act: "32+",
+    ielts: "7.5+"
+  },
+
+  campus: {
+    has_campus: true,
+    dorms: true
+  },
+
+  cost: {
+    tuition_per_year: "£28,000–£45,000",
+    total_cost_estimate: "£120,000–£180,000"
+  },
+
+  scholarships: {
+    available: true,
+    types: [
+      "Oxford scholarships",
+      "Government funding",
+      "Merit awards"
+    ]
+  },
+
+  application_timeline: {
+    grade_9: ["Strong academics"],
+    grade_10: ["Reading + debate"],
+    grade_11: ["A-level prep"],
+    grade_12: ["Apply"]
+  }
+}
+
+];
+<!DOCTYPE html>
+<html>
+<head>
+  <title>College Path</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero">
+  <h1>🎓 College Path</h1>
+
+  <p>
+    🌱 Discover universities<br>
+    📊 Learn requirements<br>
+    🧭 Build your roadmap from middle school to college
+  </p>
+
+  <a class="btn" href="signup.html">Get Started</a>
+</div>
+<div class="top-arch"></div>
+<div class="bottom-arch"></div>
+
+<div class="floating" style="top:15%; left:10%;">🎓</div>
+<div class="floating" style="top:55%; left:85%;">📚</div>
+<div class="floating" style="top:30%; left:70%;">🌱</div>
+<div class="floating" style="top:75%; left:25%;">✨</div>
+<div class="floating" style="top:10%; left:50%;">🏫</div>
+
+</body>
+</html>
+const majors = [
+  "Computer Science",
+  "Software Engineering",
+  "Mechanical Engineering",
+  "Electrical Engineering",
+  "Civil Engineering",
+  "Biomedical Engineering",
+
+  "Medicine",
+  "Nursing",
+  "Pharmacy",
+  "Dentistry",
+
+  "Business Administration",
+  "Finance",
+  "Accounting",
+  "Marketing",
+  "Economics",
+
+  "Law",
+  "Political Science",
+  "International Relations",
+
+  "Architecture",
+  "Graphic Design",
+  "Fine Arts",
+
+  "Mathematics",
+  "Physics",
+  "Chemistry",
+  "Biology",
+
+  "Psychology",
+  "Sociology",
+  "Criminology",
+
+  "Education",
+  "History",
+  "English Literature"
+];
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 style="text-align:center;">🎓 Your Colleges</h1>
+<div id="results"></div>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+<div class="top-arch"></div>
+<div class="bottom-arch"></div>
+
+<div class="floating" style="top:15%; left:10%;">🎓</div>
+<div class="floating" style="top:55%; left:85%;">📚</div>
+<div class="floating" style="top:30%; left:70%;">🌱</div>
+<div class="floating" style="top:75%; left:25%;">✨</div>
+<div class="floating" style="top:10%; left:50%;">🏫</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>School</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="school"></div>
+
+<script src="data.js"></script>
+<script src="school.js"></script>
+<div class="top-arch"></div>
+<div class="bottom-arch"></div>
+
+<div class="floating" style="top:15%; left:10%;">🎓</div>
+<div class="floating" style="top:55%; left:85%;">📚</div>
+<div class="floating" style="top:30%; left:70%;">🌱</div>
+<div class="floating" style="top:75%; left:25%;">✨</div>
+<div class="floating" style="top:10%; left:50%;">🏫</div>
+</body>
+</html>
+const id = localStorage.getItem("schoolId");
+const school = colleges.find(c => c.id === id);
+
+if (!school) {
+  document.getElementById("school").innerHTML = `
+    <div class="card">
+      <h2>⚠️ School not found</h2>
+      <p>Please go back and select a university again.</p>
+    </div>
+  `;
+} else {
+  document.getElementById("school").innerHTML = `
+
+    <div class="hero">
+      <h1>${school.name}</h1>
+      <p>📍 ${school.location.city}, ${school.location.country}</p>
+      <p>🎯 Acceptance Rate: ${school.acceptance}</p>
+    </div>
+
+    <div class="card">
+      <h2>📊 Admission Requirements</h2>
+      <p><b>SAT:</b> ${school.requirements.sat}</p>
+      <p><b>ACT:</b> ${school.requirements.act}</p>
+      <p><b>IELTS:</b> ${school.requirements.ielts}</p>
+    </div>
+
+    <div class="card">
+      <h2>🎓 Majors Offered</h2>
+      <ul>
+        ${school.majors.map(m => `<li>${m}</li>`).join("")}
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🏫 Campus Info</h2>
+      <p><b>Campus:</b> ${school.campus.has_campus ? "Yes" : "No"}</p>
+      <p><b>Dorms:</b> ${school.campus.dorms ? "Available" : "Not Available"}</p>
+    </div>
+
+    <div class="card">
+      <h2>💰 Cost of Study</h2>
+      <p><b>Tuition per year:</b> ${school.cost.tuition_per_year}</p>
+      <p><b>Total estimated cost:</b> ${school.cost.total_cost_estimate}</p>
+    </div>
+
+    <div class="card">
+      <h2>🎓 Scholarships</h2>
+      <p><b>Available:</b> ${school.scholarships.available ? "Yes" : "No"}</p>
+
+      <ul>
+        ${school.scholarships.types.map(s => `<li>${s}</li>`).join("")}
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🧭 Application Roadmap</h2>
+
+      <h3>Grade 9</h3>
+      <ul>
+        ${school.application_timeline.grade_9.map(i => `<li>${i}</li>`).join("")}
+      </ul>
+
+      <h3>Grade 10</h3>
+      <ul>
+        ${school.application_timeline.grade_10.map(i => `<li>${i}</li>`).join("")}
+      </ul>
+
+      <h3>Grade 11</h3>
+      <ul>
+        ${school.application_timeline.grade_11.map(i => `<li>${i}</li>`).join("")}
+      </ul>
+
+      <h3>Grade 12</h3>
+      <ul>
+        ${school.application_timeline.grade_12.map(i => `<li>${i}</li>`).join("")}
+      </ul>
+    </div>
+
+  `;
+}
+const major = localStorage.getItem("major");
+const results = document.getElementById("results");
+
+const filtered = colleges.filter(c =>
+  c.majors.includes(major)
+);
+
+if (filtered.length === 0) {
+  results.innerHTML = `
+    <div class="card">
+      <h2>🚧 Coming Soon</h2>
+      <p>No universities yet for <b>${major}</b>.</p>
+      <p>We are adding new schools soon.</p>
+
+      <p><b>Try these instead:</b></p>
+      <ul>
+        <li>Computer Science</li>
+        <li>Business Administration</li>
+        <li>Engineering</li>
+        <li>Medicine</li>
+      </ul>
+    </div>
+  `;
+} else {
+  filtered.forEach(c => {
+    results.innerHTML += `
+      <div class="card" onclick="openSchool('${c.id}')">
+        <h2>${c.name}</h2>
+        <p>${c.location.city}, ${c.location.country}</p>
+        <p>Acceptance: ${c.acceptance}</p>
+      </div>
+    `;
+  });
+}
+
+function openSchool(id) {
+  localStorage.setItem("schoolId", id);
+  window.location.href = "school.html";
+}
